@@ -9,8 +9,8 @@ Phylogenetic analysis of annelid opsins cover alignment pre-processing, 7TM doma
 | `Filter_template.R` | Filter a large FASTA by retaining only sequences whose IDs match a template FASTA; reports missing IDs |
 | `Cleaning_sparse_columns.R` | Remove poorly occupied alignment columns (default ≥80% occupancy); output ready for re-alignment with MAFFT |
 | `7TM_extraction.R` | Extract the 7-transmembrane domain from a full-length opsin alignment using conserved GPCR motifs (DRY/ERY and NPxxY as primary anchors, CWxP and TM1–TM4 motifs as secondary); removes gap-rich columns and reports pairwise identity and conservation statistics |
-| `Seq_alignment_renaming.R` | Replace sequence IDs with human-readable tree labels from metadata CSV; reorder sequences to match ML tree structure; write Jalview-ready FASTA for the full tree and a focal subtree |
-| `Phylogeny_visualisation.R` | Load IQ-TREE ML and MrBayes consensus trees; parse SH-aLRT, UFBoot, and posterior probability support; match internal nodes between trees by descendant tip sets; reconstruct ancestral taxon assignments; produce publication figures (full supplement tree and annelid-focused view with collapsed outgroup clades) |
+| `Seq_alignment_renaming.R` | Replace sequence IDs with tree labels from metadata CSV; reorder sequences to match ML tree structure; write Jalview-ready FASTA for the full tree and a focal subtree |
+| `Phylogeny_visualisation.R` | Load IQ-TREE ML and MrBayes consensus trees; parse SH-aLRT, UFBoot, and posterior probability support; match internal nodes between trees by descendant tip sets; reconstruct ancestral taxon assignments; produce figures |
 
 ## Pipeline
 
