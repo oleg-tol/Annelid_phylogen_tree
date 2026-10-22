@@ -62,10 +62,10 @@ motif_results <- lapply(names(opsin_motifs), function(nm) {
 names(motif_results) <- names(opsin_motifs)
 
 # ---- DEFINE 7TM BOUNDARIES ----
+`%||%` <- function(a, b) if (!is.null(a) && length(a)) a else b
+
 dry_matches <- motif_results[["DRY_motif"]]
 npy_matches <- motif_results[["NPxxY_motif"]] %||% motif_results[["NPxxY_variant"]]
-
-`%||%` <- function(a, b) if (!is.null(a) && length(a)) a else b
 
 if (!is.null(dry_matches) && !is.null(npy_matches)) {
   pairs <- do.call(rbind, lapply(dry_matches, function(d)
