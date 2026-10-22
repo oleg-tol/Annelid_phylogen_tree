@@ -2,6 +2,16 @@
 
 Phylogenetic analysis of annelid opsins: alignment pre-processing, 7TM domain extraction, maximum-likelihood / Bayesian trees with dual support values, a constrained-topology (AU) test, and analysis of residues distinguishing r-opsin1 from r-opsin3.
 
+## Citation
+
+Code and data accompany:
+
+Kumar S, Seybold A, Tolstenkov O, Tumu SC, Hausen H. Evolution of multiple cerebral eyes
+in annelids revealed by developmental, ultrastructural, and connectomic analyses.
+Manuscript in revision.
+
+Please cite the article once published (reference and DOI will be added here).
+
 ## Modules
 
 | File | Description |
@@ -63,6 +73,8 @@ install.packages(c("ape", "treeio", "ggtree", "ggplot2",
 ```
 
 Python ≥3.8 with `matplotlib`.
+
+
 
 External tools: [MAFFT](https://mafft.cbrc.jp/alignment/software/) v7.490, [IQ-TREE 2](http://www.iqtree.org/) v2.4.0, [MrBayes](https://nbisweden.github.io/MrBayes/) v3.2.7a
 
