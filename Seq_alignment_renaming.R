@@ -1,10 +1,11 @@
 library(ape)
+library(phangorn)
 library(Biostrings)
 
-tree_dir       <- "/work/oleg/Anna_data/Tree_01.02.25/Last_update2/"
-alignment_file <- file.path(tree_dir, "opsin_newA4.fa")
-ml_tree_file   <- file.path(tree_dir, "opsin_newA4.fa.treefile")
-meta_file      <- file.path(tree_dir, "opsins_listA_Tree_Labels_updated.csv")
+tree_dir       <- "/work/oleg/Anna_data/Tree_01.02.25/Last_update2/revision_capitella/"
+alignment_file <- file.path(tree_dir, "opsin_newA4_rev2.fa")
+ml_tree_file   <- file.path(tree_dir, "opsin_newA4_rev2.treefile")
+meta_file      <- file.path(tree_dir, "opsins_listA_Tree_Labels_rev.csv")
 
 alignment <- readAAStringSet(alignment_file)
 meta      <- read.csv(meta_file, stringsAsFactors = FALSE)
@@ -32,6 +33,9 @@ labeled_alignment <- function(alignment, tree_tips, metadata, output_file) {
 labeled_alignment(alignment, phy_ml$tip.label,
                   meta, file.path(tree_dir, "opsin_alignment_labeled_full.fa"))
 
-node72_tips <- phy_ml$tip.label[Descendants(phy_ml, 72, type = "tips")[[1]]]
-labeled_alignment(alignment, node72_tips,
-                  meta, file.path(tree_dir, "opsin_alignment_labeled_node72.fa"))
+# r-opsin subtree, found by tip label (MRCA of Schistosoma r-opsins and Mfu r-opsin1)
+tip_lab     <- meta$Tree_labels[match(sub("/.*$", "", phy_ml$tip.label), meta$Seq_ID)]
+ropsin_node <- getMRCA(phy_ml, phy_ml$tip.label[grepl("Schistosoma|Malacoceros fuliginosus r-opsin1", tip_lab)])
+ropsin_tips <- phy_ml$tip.label[Descendants(phy_ml, ropsin_node, type = "tips")[[1]]]
+labeled_alignment(alignment, ropsin_tips,
+                  meta, file.path(tree_dir, "opsin_alignment_labeled_ropsins.fa"))
